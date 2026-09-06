@@ -7,8 +7,6 @@ let countdownInterval = null;
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    //TODO UI
-
     handlerStartTimer();
 
     chrome.alarms.get("timer").then((alarm) => { // display the right screen when popup is opened
@@ -61,8 +59,8 @@ function startCountdown() {
 }
 
 function updateCountdown() {
-    chrome.storage.sync.get("timerEndTime").then((result) => {
-        if (!result.timerEndTime) {
+    chrome.storage.sync.get(["timerEndTime","countdown"]).then((result) => {
+        if (!result.timerEndTime && !result.countdown) {
             return;
         }
 
@@ -74,9 +72,18 @@ function updateCountdown() {
             return;
         }
 
-        const totalSeconds = Math.ceil(remaining / 1000);
-        const minutes = Math.floor(totalSeconds / 60);
-        const seconds = totalSeconds % 60;
-        countdown.innerHTML =`${minutes}:${seconds.toString().padStart(2, "0")} remaining`;
+        updateProgressBar(remaining, result.countdown);
     });
+}
+
+function updateProgressBar(remaining, countdownTotalInMinutes) {
+    const remainingSeconds = Math.ceil(remaining / 1000);
+    const countdownMinutes = Math.floor(remainingSeconds / 60);
+    const countdownSeconds = remainingSeconds % 60;
+    countdown.innerHTML =`${countdownMinutes}:${countdownSeconds.toString().padStart(2, "0")} remaining`;
+
+    const progress = document.querySelector(".progress");
+    const totalDuration = countdownTotalInMinutes * 60 * 1000;
+    const progressPercent = ((totalDuration - remaining) / totalDuration) * 100;
+    progress.style.width = `${progressPercent}%`;
 }

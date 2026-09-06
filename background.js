@@ -9,6 +9,7 @@ chrome.runtime.onMessage.addListener((message) => { // start of the timer
 
       chrome.alarms.create(myAlarmName, {delayInMinutes: message.intervalUser});
       chrome.storage.sync.set({timerActive: true});
+      chrome.storage.sync.set({countdown:message.intervalUser});
       chrome.storage.sync.set({timerEndTime: Date.now() + message.intervalUser * 60 * 1000});
     });
   }
@@ -22,6 +23,7 @@ chrome.alarms.onAlarm.addListener((alarm) => { // end of the timer
   chrome.alarms.clear(myAlarmName);
   chrome.storage.sync.set({timerActive: false});
   chrome.storage.sync.remove("timerEndTime");
+  chrome.storage.sync.remove("countdown");
 
   chrome.runtime.sendMessage({action: "showMessage"})
   .catch(() => {console.log("No popup open to send message to.")});
