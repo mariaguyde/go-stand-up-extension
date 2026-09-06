@@ -7,8 +7,8 @@ let countdownInterval = null;
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    //TODO UI & Icon missing
-    
+    //TODO UI
+
     handlerStartTimer();
 
     chrome.alarms.get("timer").then((alarm) => { // display the right screen when popup is opened
@@ -61,7 +61,6 @@ function startCountdown() {
 }
 
 function updateCountdown() {
-    console.log("Updating countdown");
     chrome.storage.sync.get("timerEndTime").then((result) => {
         if (!result.timerEndTime) {
             return;

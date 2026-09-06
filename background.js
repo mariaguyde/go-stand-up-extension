@@ -1,11 +1,13 @@
+const myAlarmName = "timer";
+
 chrome.runtime.onMessage.addListener((message) => { // start of the timer
   if (message.action === "startTimer") {
-    chrome.alarms.get("timer").then((alarm) => {
+    chrome.alarms.get(myAlarmName).then((alarm) => {
       if (alarm) {
         return;
       }
 
-      chrome.alarms.create("timer", {delayInMinutes: message.intervalUser});
+      chrome.alarms.create(myAlarmName, {delayInMinutes: message.intervalUser});
       chrome.storage.sync.set({timerActive: true});
       chrome.storage.sync.set({timerEndTime: Date.now() + message.intervalUser * 60 * 1000});
     });
@@ -13,11 +15,11 @@ chrome.runtime.onMessage.addListener((message) => { // start of the timer
 });
 
 chrome.alarms.onAlarm.addListener((alarm) => { // end of the timer
-  if (alarm.name !== "timer") {
+  if (alarm.name !== myAlarmName) {
     return;
   }
 
-  chrome.alarms.clear("timer");
+  chrome.alarms.clear(myAlarmName);
   chrome.storage.sync.set({timerActive: false});
   chrome.storage.sync.remove("timerEndTime");
 

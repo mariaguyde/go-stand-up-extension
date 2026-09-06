@@ -9,5 +9,8 @@
     "service_worker": "background.js",
     "type": "module"
   },
+  "icons": {
+    "128": "stand-up.png"
+  },
   "permissions": ["alarms", "storage", "runtime"]
 }
