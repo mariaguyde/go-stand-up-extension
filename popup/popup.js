@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (countdownInterval) {
             clearInterval(countdownInterval);
         }
-
-        form.style.display = "none";
+        
+        form.style.display = "block";
         timer.style.display = "none";
     });
 });
