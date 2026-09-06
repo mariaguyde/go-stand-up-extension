@@ -1,0 +1,5 @@
+html,body {background-color:#e1edd1;margin:0;padding:8px;color:#000;font-family:Ubuntu,sans-serif;font-size:12px;}
+body {margin-top:4em;}
+.content {display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;width:100%;}
+.content p {font-size:1.3em;}
+.content img {margin-top:20px;}

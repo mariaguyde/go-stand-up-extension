@@ -1,0 +1,11 @@
+html,body {background-color:#e1edd1;width:400px;min-width:300px;margin:0;padding:8px;color:#000;font-family:Ubuntu, sans-serif;font-size:12px;}
+body {display:flex;justify-content:center;align-items:center;text-align:center;}
+.content {padding:10px 20px 20px 20px;}
+.content .header {display:flex;flex-direction:row;justify-content:center;align-items:center;}
+.content .header img {margin-right:8px;}
+.content .form {margin-top:15px;}
+.content .form label {font-size:1.2em;}
+.content .form input {border:none;padding:8px;width:40px;margin-right:8px;}
+.content .form .input-group {margin-top:18px; display:flex;flex-direction:row;justify-content:center;align-items:center;}
+.content .form #start-button {background-color:#618764;padding:5px 15px;border:none;cursor:pointer;color:#fff;font-size:1.3em;font-weight:bold;}
+.content .timer {display:none; text-align:center;font-size:1.4em}

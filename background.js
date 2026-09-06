@@ -30,6 +30,6 @@ chrome.alarms.onAlarm.addListener((alarm) => { // end of the timer
     url: chrome.runtime.getURL("reminder/reminder.html"),
     type: "popup",
     width: 400,
-    height: 300
+    height: 400
   });
 });
