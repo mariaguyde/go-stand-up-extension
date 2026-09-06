@@ -10,7 +10,7 @@
     "type": "module"
   },
   "icons": {
-    "128": "stand-up.png"
+    "128": "assets/stand-up.png"
   },
   "permissions": ["alarms", "storage", "runtime"]
 }
