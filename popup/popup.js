@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (countdownInterval) {
             clearInterval(countdownInterval);
         }
-        
+
         form.style.display = "block";
         timer.style.display = "none";
     });
@@ -80,7 +80,7 @@ function updateProgressBar(remaining, countdownTotalInMinutes) {
     const remainingSeconds = Math.ceil(remaining / 1000);
     const countdownMinutes = Math.floor(remainingSeconds / 60);
     const countdownSeconds = remainingSeconds % 60;
-    countdown.innerHTML =`${countdownMinutes}:${countdownSeconds.toString().padStart(2, "0")} remaining`;
+    countdown.innerHTML =`${countdownMinutes}:${countdownSeconds.toString().padStart(2, "0")}`;
 
     const progress = document.querySelector(".progress");
     const totalDuration = countdownTotalInMinutes * 60 * 1000;
